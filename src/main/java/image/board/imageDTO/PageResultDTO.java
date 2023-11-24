@@ -1,4 +1,4 @@
-package image.server.imageDTO;
+package image.board.imageDTO;
 
 import lombok.Data;
 import org.springframework.data.domain.Page;

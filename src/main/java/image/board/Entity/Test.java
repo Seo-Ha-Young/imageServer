@@ -1,4 +1,4 @@
-package image.server.Entity;
+package image.board.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

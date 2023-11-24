@@ -1,14 +1,13 @@
 package image.server.controller;
 
 
-import image.server.imageDTO.TestDTO;
+import image.board.imageDTO.TestDTO;
+import image.board.service.ImageService;
 import image.server.payload.Response;
-import image.server.service.ImageService;
 import image.server.service.StorageService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,16 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//@RestController
 @Controller
 @RequestMapping("/wcs/image")
 @RequiredArgsConstructor
 public class FileController {
-
     private static final Logger logger = LoggerFactory.getLogger(FileController.class);
     private final StorageService storageService;
     private final ImageService imageService;
-
     @GetMapping("/upload")
     public void upload() {}
     @PostMapping("/upload")

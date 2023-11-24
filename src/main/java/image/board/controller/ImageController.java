@@ -1,30 +1,23 @@
-package image.server.controller;
+package image.board.controller;
 
 
+import image.board.imageDTO.PageRequestDTO;
+import image.board.service.ImageService;
 import image.server.config.FileStorageProperties;
-import image.server.imageDTO.PageRequestDTO;
-import image.server.imageDTO.TestDTO;
-import image.server.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 import java.net.URLDecoder;
 import java.nio.file.Files;
-import java.util.List;
 
 
 @Controller

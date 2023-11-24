@@ -1,4 +1,4 @@
-package image.server.Entity;
+package image.board.Entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

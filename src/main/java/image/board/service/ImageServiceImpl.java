@@ -1,13 +1,13 @@
-package image.server.service;
+package image.board.service;
 
-import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.BooleanBuilder;
-import image.server.Entity.QTest;
-import image.server.Entity.Test;
-import image.server.imageDTO.PageRequestDTO;
-import image.server.imageDTO.PageResultDTO;
-import image.server.imageDTO.TestDTO;
-import image.server.repository.ImageRepository;
+import com.querydsl.core.types.dsl.BooleanExpression;
+import image.board.Entity.QTest;
+import image.board.Entity.Test;
+import image.board.imageDTO.PageRequestDTO;
+import image.board.imageDTO.PageResultDTO;
+import image.board.imageDTO.TestDTO;
+import image.board.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -22,7 +22,7 @@ import java.util.function.Function;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class ImageServiceImpl implements ImageService{
+public class ImageServiceImpl implements ImageService {
     private final ImageRepository imageRepository;
 
     @Override

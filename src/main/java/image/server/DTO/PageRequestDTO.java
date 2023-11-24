@@ -1,4 +1,4 @@
-package image.server.imageDTO;
+package image.server.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

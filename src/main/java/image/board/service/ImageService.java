@@ -1,10 +1,10 @@
-package image.server.service;
+package image.board.service;
 
 
-import image.server.Entity.Test;
-import image.server.imageDTO.PageRequestDTO;
-import image.server.imageDTO.PageResultDTO;
-import image.server.imageDTO.TestDTO;
+import image.board.Entity.Test;
+import image.board.imageDTO.PageRequestDTO;
+import image.board.imageDTO.PageResultDTO;
+import image.board.imageDTO.TestDTO;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +12,7 @@ import java.util.Map;
 public interface ImageService {
     Long register(TestDTO testDTO);
 
+    PageResultDTO<TestDTO, Test> getList(PageRequestDTO requestDTO);
     default Map<String, Object> dtoToEntity(TestDTO testDTO) {
         Map<String, Object> entityMap = new HashMap<>();
         Test test = Test.builder()
@@ -29,6 +30,6 @@ public interface ImageService {
                 .regDate(entity.getRegDate())
                 .build();
     }
-    PageResultDTO<TestDTO, Test> getList(PageRequestDTO requestDTO);
+
 
 }
