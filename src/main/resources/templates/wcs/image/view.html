@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <th:block th:fragment="content">
-        <h1 class="mt-4">Movie Register Page
-            <span>
-        <a th:href="@{/movie/list}">
-          <button type="button" class="btn btn-outline-primary">LIST</button>
-        </a>
-      </span>
-        </h1>
-        <form th:action="@{/wcs/image/upload}" th:method="post" enctype="multipart/form-data">
+
+        <form th:action="@{/wcs/image/view}">
             <div class="form-group">
-                <label>Image Files</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input files" name="file" id="fileInput" multiple>
-                    <label class="custom-file-label" data-browse="Browse"></label>
-                </div>
+                <input type="text" class="custom-file-input files" name="no">
+                <tr th:each="dto : ${result}">
+                      <th>
+                        <a>
+                            [[${dto}]]
+                        </a>
+                      </th>
+                </tr>
             </div>
             <div class="box">
 

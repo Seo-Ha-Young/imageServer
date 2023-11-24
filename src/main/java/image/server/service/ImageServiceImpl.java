@@ -1,15 +1,23 @@
 package image.server.service;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.BooleanBuilder;
+import image.server.Entity.QTest;
 import image.server.Entity.Test;
+import image.server.imageDTO.PageRequestDTO;
+import image.server.imageDTO.PageResultDTO;
 import image.server.imageDTO.TestDTO;
 import image.server.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 
 import javax.transaction.Transactional;
 import java.util.Map;
+import java.util.function.Function;
 
 @Service
 @Log4j2
@@ -26,5 +34,31 @@ public class ImageServiceImpl implements ImageService{
         return test.getNo();
     }
 
+    @Override
+    public PageResultDTO<TestDTO, Test> getList(PageRequestDTO requestDTO) {
+        Pageable pageable = requestDTO.getPageable(Sort.by("no").descending());
+        BooleanBuilder booleanBuilder = getSearch(requestDTO);
+        Page<Test> result = imageRepository.findAll(booleanBuilder, pageable);
+        Function<Test, TestDTO> fn = (entity -> entityToDto(entity));
+        return new PageResultDTO<>(result, fn);
+    }
+
+    private BooleanBuilder getSearch(PageRequestDTO requestDTO) {
+        String type = requestDTO.getType();
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+        QTest qTest = QTest.test;
+        String keyword = requestDTO.getKeyword();
+        BooleanExpression expression = qTest.no.gt(0L);
+        booleanBuilder.and(expression);
+        if(type == null || type.trim().length() == 0) {
+            return  booleanBuilder;
+        }
+        BooleanBuilder conditionBuilder = new BooleanBuilder();
+        if(type.contains("c")){
+            conditionBuilder.or(qTest.img_name.contains(keyword));
+        }
+        booleanBuilder.and(conditionBuilder);
+        return booleanBuilder;
+    }
 
 }
