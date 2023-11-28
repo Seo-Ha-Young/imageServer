@@ -1,4 +1,4 @@
-package image.server;
+package image;
 
 import image.server.config.FileStorageProperties;
 import org.springframework.boot.SpringApplication;
@@ -8,10 +8,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableConfigurationProperties(FileStorageProperties.class)
-public class ServerApplication {
+@EnableJpaAuditing
+public class ImageApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ServerApplication.class, args);
+		SpringApplication.run(ImageApplication.class, args);
 	}
 
 }
